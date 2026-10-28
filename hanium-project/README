@@ -76,7 +76,7 @@ Streamlit 대시보드와 SQLite 저장·조회 기능을 추가했고, 실제 A
 모듈화 자체가 탐지 정확도 향상을 의미하지는 않습니다.
 
 원본과 모든 계산 결과가 같은지는 별도 비교 검증이 필요합니다.
-비교용 원본은 `notebooks/haneium_original.ipynb`에 있습니다.
+비교용 원본은 `notebooks/hanium_original.ipynb`에 있습니다.
 
 ## 3. 실행 흐름
 
@@ -138,7 +138,7 @@ Mock 행동 데이터를 실제 AWS 결과에 섞거나, 행동 분석을 실행
 | `remediation/` | 개선 대상·조치·계획·적용 시뮬레이션·재분석 |
 | `visualization/` | 분석 결과 시각화 |
 | `checks/` | 단계별 실행·결과 검사 |
-| `notebooks/haneium_original.ipynb` | 비교용 원본 노트북 |
+| `notebooks/hanium_original.ipynb` | 비교용 원본 노트북 |
 
 ## 5. 설치 및 실행
 

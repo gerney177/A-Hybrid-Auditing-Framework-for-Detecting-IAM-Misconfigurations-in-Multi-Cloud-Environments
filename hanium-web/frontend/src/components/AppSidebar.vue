@@ -29,7 +29,7 @@ const activeName = computed(() => (route.meta.parent as string | undefined) ?? (
         <Icon name="shield" :size="19" />
       </div>
       <div class="leading-tight">
-        <div class="text-[15px] font-bold tracking-tight">Haneium</div>
+        <div class="text-[15px] font-bold tracking-tight">Hanium</div>
         <div class="text-[11.5px] text-muted">IAM 위험 분석</div>
       </div>
     </div>

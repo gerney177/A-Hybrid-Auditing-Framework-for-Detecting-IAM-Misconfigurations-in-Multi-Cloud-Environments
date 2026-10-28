@@ -1,11 +1,11 @@
-# Haneium Web — IAM 위험 분석 대시보드 (Vue)
+# Hanium Web — IAM 위험 분석 대시보드 (Vue)
 
 이전 Streamlit 대시보드를 대체하는 별도 프론트엔드입니다.
 분석 코드는 그대로 두고, **얇은 API(FastAPI)** 가 결과를 내려주면 **Vue 화면**이 그립니다.
 
 ```
-haneium-web/
-├── backend/    FastAPI — haneium-project 의 분석 결과를 JSON 으로 제공
+hanium-web/
+├── backend/    FastAPI — hanium-project 의 분석 결과를 JSON 으로 제공
 └── frontend/   Vue 3 + Vite + TypeScript + Tailwind v4 + ECharts
 ```
 
@@ -23,17 +23,17 @@ haneium-web/
 
 ## 실행
 
-`haneium-web` 폴더에서 실행합니다.
+`hanium-web` 폴더에서 실행합니다.
 
 ### 처음 한 번 — `./setup.sh`
 
 ```bash
-cd haneium-web
+cd hanium-web
 ./setup.sh
 ```
 
 `.venv` 가상환경을 만들고 파이썬·프론트 패키지를 모두 설치합니다.
-`haneium-project/requirements-local.txt` 의 고정 버전(numpy 2.5.4 등)이 **Python 3.12 이상**을 요구해서,
+`hanium-project/requirements-local.txt` 의 고정 버전(numpy 2.5.4 등)이 **Python 3.12 이상**을 요구해서,
 스크립트가 `python3.14 → 3.13 → 3.12` 순으로 찾아 씁니다. 시스템 기본 `python`(3.11)로는 설치되지 않아요.
 
 ### 실행 — `./dev.sh`
@@ -69,7 +69,7 @@ cd frontend && npm run dev
 
 | 환경 변수 | 기본값 | 설명 |
 |---|---|---|
-| `HANEIUM_PROJECT` | `../haneium-project` (없으면 `../haneium-local-full/haneium-project`) | 분석 코드가 있는 폴더 |
+| `HANIUM_PROJECT` | `../hanium-project` | 분석 코드가 있는 폴더 |
 | `API_TARGET` | `http://127.0.0.1:8010` | (프론트 개발 서버) API 주소 |
 
 ## API

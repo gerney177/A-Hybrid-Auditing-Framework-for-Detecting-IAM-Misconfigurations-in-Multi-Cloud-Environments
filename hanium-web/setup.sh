@@ -3,15 +3,10 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# 분석 코드 위치: 환경 변수 → 저장소 구조(../haneium-project) → 작업 폴더 구조 순으로 찾는다.
-PROJECT="${HANEIUM_PROJECT:-}"
-if [ -z "$PROJECT" ]; then
-  for candidate in ../haneium-project ../haneium-local-full/haneium-project; do
-    if [ -f "$candidate/requirements-local.txt" ]; then PROJECT="$candidate"; break; fi
-  done
-fi
-[ -n "$PROJECT" ] && [ -f "$PROJECT/requirements-local.txt" ] || {
-  echo "haneium-project 를 찾을 수 없습니다. HANEIUM_PROJECT 에 폴더 경로를 지정하세요."; exit 1; }
+# 분석 코드 위치: 환경 변수가 없으면 저장소 구조(../hanium-project)를 쓴다.
+PROJECT="${HANIUM_PROJECT:-../hanium-project}"
+[ -f "$PROJECT/requirements-local.txt" ] || {
+  echo "hanium-project 를 찾을 수 없습니다. HANIUM_PROJECT 에 폴더 경로를 지정하세요."; exit 1; }
 
 # requirements-local.txt 의 고정 버전(numpy 2.5.4 등)은 Python 3.12 이상이 필요하다.
 PY=""

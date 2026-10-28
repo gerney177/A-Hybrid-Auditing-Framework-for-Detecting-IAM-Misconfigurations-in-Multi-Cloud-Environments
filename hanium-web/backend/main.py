@@ -1,6 +1,6 @@
 """Vue 프론트용 API.
 
-분석 로직은 haneium-project 의 코드를 그대로 가져다 쓰고, 이 파일은
+분석 로직은 hanium-project 의 코드를 그대로 가져다 쓰고, 이 파일은
 저장된 분석 보고서를 화면에 맞는 모양으로 바꿔서 내려주는 역할만 한다.
 조회(GET)는 보고서 파일을 읽기만 하며, 분석 실행·DB 저장은 POST /api/runs 에서만 일어난다.
 """
@@ -19,16 +19,16 @@ ROOT = HERE.parents[1]
 
 
 def find_project() -> Path:
-    """분석 코드(haneium-project) 위치. 환경 변수 → 저장소 구조 → 작업 폴더 구조 순으로 찾는다."""
-    env = os.environ.get("HANEIUM_PROJECT")
-    candidates = [Path(env)] if env else [ROOT / "haneium-project", ROOT / "haneium-local-full" / "haneium-project"]
+    """분석 코드(hanium-project) 위치. 환경 변수가 있으면 그 경로, 없으면 저장소 구조(../hanium-project)."""
+    env = os.environ.get("HANIUM_PROJECT")
+    candidates = [Path(env)] if env else [ROOT / "hanium-project"]
     for candidate in candidates:
         if (candidate / "analysis").is_dir():
             return candidate.resolve()
     raise SystemExit(
-        "haneium-project 를 찾을 수 없습니다. 찾아본 위치:\n  "
+        "hanium-project 를 찾을 수 없습니다. 찾아본 위치:\n  "
         + "\n  ".join(str(c) for c in candidates)
-        + "\n환경 변수 HANEIUM_PROJECT 에 haneium-project 폴더 경로를 지정하세요."
+        + "\n환경 변수 HANIUM_PROJECT 에 hanium-project 폴더 경로를 지정하세요."
     )
 
 
@@ -50,14 +50,14 @@ except ModuleNotFoundError as error:
     raise SystemExit(
         f"필요한 패키지가 없습니다: {error.name}\n"
         f"지금 쓰는 Python: {sys.executable} ({sys.version.split()[0]})\n"
-        "haneium-web 폴더에서 ./setup.sh 를 한 번 실행한 뒤 ./dev.sh 로 시작하세요.\n"
+        "hanium-web 폴더에서 ./setup.sh 를 한 번 실행한 뒤 ./dev.sh 로 시작하세요.\n"
         "(고정 버전 numpy 2.5.4 는 Python 3.12 이상에서만 설치됩니다.)"
     ) from error
 
 DIST = HERE.parent / "frontend" / "dist"
 VERDICTS = ("BLOCK", "ALERT", "ALLOW")
 
-app = FastAPI(title="Haneium IAM API", docs_url="/api/docs", openapi_url="/api/openapi.json")
+app = FastAPI(title="Hanium IAM API", docs_url="/api/docs", openapi_url="/api/openapi.json")
 run_lock = threading.Lock()
 
 

@@ -31,5 +31,5 @@ export const router = createRouter({
 
 router.afterEach((to) => {
   const title = (to.meta.title as string | undefined) ?? ''
-  document.title = title ? `${to.params.name ?? title} · Haneium IAM` : 'Haneium · IAM 위험 분석'
+  document.title = title ? `${to.params.name ?? title} · Hanium IAM` : 'Hanium · IAM 위험 분석'
 })
