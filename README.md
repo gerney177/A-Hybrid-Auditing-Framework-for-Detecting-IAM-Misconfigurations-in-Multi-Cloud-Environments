@@ -1,4 +1,4 @@
-# Haneium — 멀티클라우드 IAM 위험 분석
+# Hanium — 멀티클라우드 IAM 위험 분석
 
 AWS·Azure·GCP의 IAM 정책, 보안 설정, 행동 데이터를 **규칙 · 행동 이상 탐지(AI) · 권한 그래프** 세 가지로 분석해
 대상마다 `ALLOW / ALERT / BLOCK` 판정과 개선 권고를 내는 한이음 프로젝트입니다.
