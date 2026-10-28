@@ -1,0 +1,490 @@
+{
+  "source": "existing_mock25_extended",
+  "users": [
+    {
+      "UserName": "developer01",
+      "Arn": "arn:aws:iam::111122223333:user/developer01",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::developer01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::developer01"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::developer01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "admin01",
+      "Arn": "arn:aws:iam::111122223333:user/admin01",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::admin01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::admin01"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "devops01",
+      "Arn": "arn:aws:iam::111122223333:user/devops01",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::devops01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::devops01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "serviceaccount01",
+      "Arn": "arn:aws:iam::111122223333:user/serviceaccount01",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::serviceaccount01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::serviceaccount01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userA",
+      "Arn": "arn:aws:iam::111122223333:user/userA",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userA-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userA"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userD",
+      "Arn": "arn:aws:iam::111122223333:user/userD",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userD-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userD"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userG",
+      "Arn": "arn:aws:iam::111122223333:user/userG",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userG-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userG"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userJ",
+      "Arn": "arn:aws:iam::111122223333:user/userJ",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userJ-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userJ"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userM",
+      "Arn": "arn:aws:iam::111122223333:user/userM",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userM-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userM"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "GroupName": "ProjectReaders",
+      "Arn": "arn:aws:iam::111122223333:group/ProjectReaders",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "ProjectReadersPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::project-documents/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "StorageOperators",
+      "Arn": "arn:aws:iam::111122223333:group/StorageOperators",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "StorageOperatorsPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": "arn:aws:s3:::project-storage/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "AutomationOperators",
+      "Arn": "arn:aws:iam::111122223333:group/AutomationOperators",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "AutomationOperatorsPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/application-*",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "RoleName": "ReadOnlyRole",
+      "Arn": "arn:aws:iam::111122223333:role/ReadOnlyRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/admin01"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "ReadOnlyRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::project-documents/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "StorageMaintenanceRole",
+      "Arn": "arn:aws:iam::111122223333:role/StorageMaintenanceRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/userM"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "StorageMaintenanceRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": "arn:aws:s3:::project-storage/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "DeploymentRole",
+      "Arn": "arn:aws:iam::111122223333:role/DeploymentRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/userD"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "DeploymentRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/application-*",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "managed_policies": []
+}

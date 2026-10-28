@@ -1,0 +1,1391 @@
+{
+  "version": "policy-cases-v1",
+  "source": "synthetic_only",
+  "cases": [
+    {
+      "id": "P01",
+      "title": "사용자 제한 읽기 정책",
+      "category": "기본 정상 입력",
+      "purpose": "사용자 직접 읽기 정책에 검사 대상 후보가 발생하지 않는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "title": "역할 제한 읽기 정책",
+      "category": "기본 정상 입력",
+      "purpose": "역할 권한 정책도 사용자와 같은 검사 기준을 적용하는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [],
+        "roles": [
+          {
+            "RoleName": "ValidationRole",
+            "Arn": "arn:aws:iam::000000000000:role/ValidationRole",
+            "RolePolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "P03",
+      "title": "그룹 경유 읽기 정책",
+      "category": "기본 정상 입력",
+      "purpose": "그룹의 읽기 정책을 소속 사용자에게 연결하고 후보가 없는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [],
+            "GroupList": [
+              "ValidationGroup"
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [
+          {
+            "GroupName": "ValidationGroup",
+            "Arn": "arn:aws:iam::000000000000:group/ValidationGroup",
+            "GroupPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        },
+        "attachment_type": "group"
+      }
+    },
+    {
+      "id": "W01",
+      "title": "서비스 전체 액션 s3:*",
+      "category": "액션 패턴",
+      "purpose": "서비스 전체 액션을 와일드카드 검토 후보로 분류한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 1,
+          "passrole_findings": 0
+        },
+        "wildcard_types": [
+          "SERVICE_ALL_ACTIONS"
+        ]
+      }
+    },
+    {
+      "id": "W02",
+      "title": "전체 액션 *",
+      "category": "액션 패턴",
+      "purpose": "전체 액션 패턴이 와일드카드와 PassRole 양쪽 후보에 포함되는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 1,
+          "passrole_findings": 1
+        },
+        "wildcard_types": [
+          "ALL_ACTIONS"
+        ]
+      }
+    },
+    {
+      "id": "W03",
+      "title": "IAM 전체 액션 iam:*",
+      "category": "액션 패턴",
+      "purpose": "iam:*에 포함되는 PassRole 후보를 누락하지 않는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 1,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "W04",
+      "title": "조회 액션 패턴 ec2:Describe*",
+      "category": "액션 패턴",
+      "purpose": "조회 패턴도 검토 후보로 표시하되 위험 확정으로 해석하지 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "ec2:Describe*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 1,
+          "passrole_findings": 0
+        },
+        "wildcard_types": [
+          "ACTION_PATTERN"
+        ]
+      }
+    },
+    {
+      "id": "W05",
+      "title": "부분 패턴 iam:Pass*",
+      "category": "액션 패턴",
+      "purpose": "정확한 액션명이 아니어도 PassRole을 포함하는 패턴을 검사한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:Pass*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 1,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "W06",
+      "title": "PassRole 액션 대소문자",
+      "category": "액션 패턴",
+      "purpose": "액션의 대소문자가 달라도 PassRole 후보를 찾는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "IAM:pAsSrOlE",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "D01",
+      "title": "Deny PassRole",
+      "category": "Allow·Deny",
+      "purpose": "Deny 구문을 Allow PassRole 후보로 잘못 분류하지 않는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Deny",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "D02",
+      "title": "Deny 전체 액션",
+      "category": "Allow·Deny",
+      "purpose": "Deny의 와일드카드 액션을 허용 후보로 잘못 분류하지 않는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Deny",
+                      "Action": "*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "D03",
+      "title": "Allow와 Deny가 함께 존재",
+      "category": "Allow·Deny",
+      "purpose": "Allow 후보는 보존하지만 명시적 Deny를 종합한 최종 유효 권한을 판정한 것은 아님을 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    },
+                    {
+                      "Effect": "Deny",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 2,
+          "wildcard_findings": 0,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "C01",
+      "title": "Resource·Condition 제한 PassRole",
+      "category": "조건·리소스 범위",
+      "purpose": "제한된 후보도 조건과 리소스를 잃지 않고 검토 근거로 보존한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:iam::000000000000:role/ApprovedRole",
+                      "Condition": {
+                        "StringEquals": {
+                          "iam:PassedToService": "lambda.amazonaws.com"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 1
+        },
+        "resources": [
+          "arn:aws:iam::000000000000:role/ApprovedRole"
+        ],
+        "condition": {
+          "StringEquals": {
+            "iam:PassedToService": "lambda.amazonaws.com"
+          }
+        }
+      }
+    },
+    {
+      "id": "C02",
+      "title": "Resource만 *인 읽기 정책",
+      "category": "조건·리소스 범위",
+      "purpose": "Resource 와일드카드와 Action 와일드카드를 구분한다. 후보 없음이 최소 권한 충족을 뜻하지는 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "F01",
+      "title": "Statement 단일 객체",
+      "category": "입력 형식",
+      "purpose": "목록이 아닌 단일 Statement 객체가 누락되지 않는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": {
+                    "Effect": "Allow",
+                    "Action": "s3:GetObject",
+                    "Resource": "arn:aws:s3:::validation-data/*"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "F02",
+      "title": "여러 Action을 가진 구문",
+      "category": "입력 형식",
+      "purpose": "Action별로 레코드를 만들고 서로 다른 후보를 각각 탐지한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "s3:GetObject",
+                        "s3:*",
+                        "iam:PassRole"
+                      ],
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 3,
+          "wildcard_findings": 1,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "F03",
+      "title": "여러 리소스를 가진 구문",
+      "category": "입력 형식",
+      "purpose": "Resource 목록이 정규화 뒤에도 원래 값으로 유지되는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": [
+                        "arn:aws:s3:::validation-data/*",
+                        "arn:aws:s3:::second-data/*"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        },
+        "resources": [
+          "arn:aws:s3:::validation-data/*",
+          "arn:aws:s3:::second-data/*"
+        ]
+      }
+    },
+    {
+      "id": "F04",
+      "title": "URL 인코딩된 정책 본문",
+      "category": "입력 형식",
+      "purpose": "인코딩된 JSON 정책도 해독하여 동일하게 검사하는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": "%7B%22Version%22%3A%20%222012-10-17%22%2C%20%22Statement%22%3A%20%5B%7B%22Effect%22%3A%20%22Allow%22%2C%20%22Action%22%3A%20%22iam%3APassRole%22%2C%20%22Resource%22%3A%20%22arn%3Aaws%3As3%3A%3A%3Avalidation-data/%2A%22%7D%5D%7D"
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 1
+        }
+      }
+    },
+    {
+      "id": "M01",
+      "title": "관리형 정책의 기본 버전",
+      "category": "정책 출처·연결",
+      "purpose": "과거 버전의 *를 검사하지 않고 현재 기본 버전의 읽기 정책만 검사한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [],
+            "AttachedManagedPolicies": [
+              {
+                "PolicyName": "VersionedPolicy",
+                "PolicyArn": "arn:aws:iam::000000000000:policy/VersionedPolicy"
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": [
+          {
+            "Arn": "arn:aws:iam::000000000000:policy/VersionedPolicy",
+            "PolicyVersionList": [
+              {
+                "IsDefaultVersion": false,
+                "VersionId": "v1",
+                "Document": {
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              },
+              {
+                "IsDefaultVersion": true,
+                "VersionId": "v2",
+                "Document": {
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 0
+        }
+      }
+    },
+    {
+      "id": "G01",
+      "title": "그룹을 통한 PassRole",
+      "category": "정책 출처·연결",
+      "purpose": "그룹 정책 후보가 그룹 자체가 아닌 실제 사용자에 연결되는지 확인한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [],
+            "GroupList": [
+              "ValidationGroup"
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [
+          {
+            "GroupName": "ValidationGroup",
+            "Arn": "arn:aws:iam::000000000000:group/ValidationGroup",
+            "GroupPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 1,
+          "normalized_records": 1,
+          "wildcard_findings": 0,
+          "passrole_findings": 1
+        },
+        "attachment_type": "group",
+        "permission_paths": true
+      }
+    },
+    {
+      "id": "G02",
+      "title": "동일 권한의 직접·그룹 경유",
+      "category": "정책 출처·연결",
+      "purpose": "같은 사용자에게 직접·그룹으로 연결된 권한을 별도 출처 경로로 보존한다. 후보 수는 경로별 건수다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ],
+            "GroupList": [
+              "ValidationGroup"
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [
+          {
+            "GroupName": "ValidationGroup",
+            "Arn": "arn:aws:iam::000000000000:group/ValidationGroup",
+            "GroupPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "iam:PassRole",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 2,
+          "normalized_records": 2,
+          "wildcard_findings": 0,
+          "passrole_findings": 2
+        },
+        "unique_paths": 2
+      }
+    },
+    {
+      "id": "G03",
+      "title": "여러 그룹의 같은 인라인 정책 이름",
+      "category": "정책 출처·연결",
+      "purpose": "정책 이름이 같아도 그룹 ARN과 경로로 출처를 구별한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [],
+            "GroupList": [
+              "ValidationGroup",
+              "SecondGroup"
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [
+          {
+            "GroupName": "ValidationGroup",
+            "Arn": "arn:aws:iam::000000000000:group/ValidationGroup",
+            "GroupPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "GroupName": "SecondGroup",
+            "Arn": "arn:aws:iam::000000000000:group/SecondGroup",
+            "GroupPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:*",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "analyzed",
+        "counts": {
+          "policy_items": 2,
+          "normalized_records": 2,
+          "wildcard_findings": 2,
+          "passrole_findings": 0
+        },
+        "unique_paths": 2
+      }
+    },
+    {
+      "id": "E01",
+      "title": "미지원 NotAction",
+      "category": "미지원·오류 입력",
+      "purpose": "해석하지 못하는 구문을 정상 또는 후보 없음으로 숨기지 않고 거부한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Resource": "arn:aws:s3:::validation-data/*",
+                      "NotAction": "iam:*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "unsupported",
+        "error_type": "ValueError",
+        "error_contains": "NotAction/NotResource"
+      }
+    },
+    {
+      "id": "E02",
+      "title": "미지원 NotResource",
+      "category": "미지원·오류 입력",
+      "purpose": "미지원 리소스 제외 구문을 부분 분석으로 통과시키지 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "NotResource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "unsupported",
+        "error_type": "ValueError",
+        "error_contains": "NotAction/NotResource"
+      }
+    },
+    {
+      "id": "E03",
+      "title": "Action 누락",
+      "category": "미지원·오류 입력",
+      "purpose": "필수 액션이 없는 입력을 분석 실패로 명시한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "Action"
+      }
+    },
+    {
+      "id": "E04",
+      "title": "빈 Statement",
+      "category": "미지원·오류 입력",
+      "purpose": "검사할 구문이 없는 정책을 성공 분석으로 간주하지 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": []
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "Statement"
+      }
+    },
+    {
+      "id": "E05",
+      "title": "잘못된 Effect",
+      "category": "미지원·오류 입력",
+      "purpose": "Allow/Deny가 아닌 Effect를 거부한다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Permit",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "Effect"
+      }
+    },
+    {
+      "id": "E06",
+      "title": "Resource 누락",
+      "category": "미지원·오류 입력",
+      "purpose": "리소스가 없는 정책을 임의로 *로 바꾸어 분석하지 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "Resource"
+      }
+    },
+    {
+      "id": "E07",
+      "title": "소속 그룹 본문 누락",
+      "category": "미지원·오류 입력",
+      "purpose": "직접 정책이 있어도 그룹 권한을 누락한 불완전 분석을 막는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ],
+            "GroupList": [
+              "MissingGroup"
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "그룹 본문"
+      }
+    },
+    {
+      "id": "E08",
+      "title": "관리형 정책 본문 누락",
+      "category": "미지원·오류 입력",
+      "purpose": "가져오지 못한 정책을 검사에서 조용히 제외하지 않는다.",
+      "snapshot": {
+        "source": "synthetic_policy_validation",
+        "collected_at": "2026-10-26T00:00:00+00:00",
+        "users": [
+          {
+            "UserName": "validation-user",
+            "Arn": "arn:aws:iam::000000000000:user/validation-user",
+            "UserPolicyList": [
+              {
+                "PolicyName": "ValidationPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "s3:GetObject",
+                      "Resource": "arn:aws:s3:::validation-data/*"
+                    }
+                  ]
+                }
+              }
+            ],
+            "AttachedManagedPolicies": [
+              {
+                "PolicyName": "MissingPolicy",
+                "PolicyArn": "arn:aws:iam::000000000000:policy/MissingPolicy"
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "groups": [],
+        "managed_policies": []
+      },
+      "expected": {
+        "outcome": "invalid",
+        "error_type": "ValueError",
+        "error_contains": "정책 본문"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2423 @@
+{
+  "baseline_dataset_id": 14,
+  "source": "mock25_extended",
+  "baseline_input": {
+    "policies": [
+      {
+        "identity": "developer01",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::developer01-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::developer01"
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:*",
+                "iam:PassRole"
+              ],
+              "Resource": "*",
+              "Principal": {
+                "AWS": "arn:aws:iam::developer01"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "admin01",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::admin01-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::admin01"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "auditor01",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "auditor01",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+            "Microsoft.Authorization/roleAssignments/write"
+          ]
+        }
+      },
+      {
+        "identity": "dataanalyst01",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:dataanalyst01@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get",
+              "resourcemanager.projects.setIamPolicy"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "devops01",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::devops01-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::devops01"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "guest01",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "guest01",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "testuser01",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:testuser01@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "serviceaccount01",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::serviceaccount01-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::serviceaccount01"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "monitor01",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "monitor01",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "securityadmin01",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:securityadmin01@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "userA",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::userA-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::userA"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "userB",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "userB",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "userC",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:userC@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "userD",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::userD-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::userD"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "userE",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "userE",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "userF",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:userF@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "userG",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::userG-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::userG"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "userH",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "userH",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "userI",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:userI@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "userJ",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::userJ-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::userJ"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "userK",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "userK",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "userL",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:userL@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      },
+      {
+        "identity": "userM",
+        "csp": "AWS",
+        "raw_policy_document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::userM-bucket/*",
+              "Principal": {
+                "AWS": "arn:aws:iam::userM"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "identity": "userN",
+        "csp": "Azure",
+        "raw_policy_document": {
+          "principal": "userN",
+          "role": "Reader",
+          "actions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+          ]
+        }
+      },
+      {
+        "identity": "userO",
+        "csp": "GCP",
+        "raw_policy_document": {
+          "binding": {
+            "members": [
+              "user:userO@example.com"
+            ],
+            "role": "roles/viewer",
+            "permissions": [
+              "storage.objects.get"
+            ]
+          }
+        }
+      }
+    ],
+    "metadata": [
+      {
+        "identity": "developer01",
+        "cloud_provider": "AWS",
+        "role": "Developer",
+        "is_admin": true,
+        "mfa_enabled": false,
+        "has_api_key": true,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": true,
+        "risk_scenario": "wildcard_and_passrole"
+      },
+      {
+        "identity": "admin01",
+        "cloud_provider": "AWS",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "auditor01",
+        "cloud_provider": "Azure",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": true,
+        "risk_scenario": "role_assignment_write"
+      },
+      {
+        "identity": "dataanalyst01",
+        "cloud_provider": "GCP",
+        "role": "DataAnalyst",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": true,
+        "risk_scenario": "set_iam_policy"
+      },
+      {
+        "identity": "devops01",
+        "cloud_provider": "AWS",
+        "role": "Operator",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "guest01",
+        "cloud_provider": "Azure",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "testuser01",
+        "cloud_provider": "GCP",
+        "role": "Operator",
+        "is_admin": false,
+        "mfa_enabled": false,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "serviceaccount01",
+        "cloud_provider": "AWS",
+        "role": "Operator",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": true,
+        "risk_scenario": "behavior_only"
+      },
+      {
+        "identity": "monitor01",
+        "cloud_provider": "Azure",
+        "role": "Developer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": true,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "securityadmin01",
+        "cloud_provider": "GCP",
+        "role": "Viewer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userA",
+        "cloud_provider": "AWS",
+        "role": "Developer",
+        "is_admin": true,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userB",
+        "cloud_provider": "Azure",
+        "role": "Viewer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": true,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userC",
+        "cloud_provider": "GCP",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userD",
+        "cloud_provider": "AWS",
+        "role": "Viewer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userE",
+        "cloud_provider": "Azure",
+        "role": "Operator",
+        "is_admin": false,
+        "mfa_enabled": false,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userF",
+        "cloud_provider": "GCP",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userG",
+        "cloud_provider": "AWS",
+        "role": "Auditor",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userH",
+        "cloud_provider": "Azure",
+        "role": "Developer",
+        "is_admin": true,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userI",
+        "cloud_provider": "GCP",
+        "role": "Developer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userJ",
+        "cloud_provider": "AWS",
+        "role": "Developer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Low",
+        "privilege_level_numeric": 1,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userK",
+        "cloud_provider": "Azure",
+        "role": "Auditor",
+        "is_admin": true,
+        "mfa_enabled": false,
+        "has_api_key": true,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userL",
+        "cloud_provider": "GCP",
+        "role": "Developer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userM",
+        "cloud_provider": "AWS",
+        "role": "Auditor",
+        "is_admin": true,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userN",
+        "cloud_provider": "Azure",
+        "role": "Viewer",
+        "is_admin": true,
+        "mfa_enabled": true,
+        "has_api_key": false,
+        "privilege_level": "High",
+        "privilege_level_numeric": 3,
+        "is_true_risk": false,
+        "risk_scenario": null
+      },
+      {
+        "identity": "userO",
+        "cloud_provider": "GCP",
+        "role": "Viewer",
+        "is_admin": false,
+        "mfa_enabled": true,
+        "has_api_key": true,
+        "privilege_level": "Medium",
+        "privilege_level_numeric": 2,
+        "is_true_risk": false,
+        "risk_scenario": null
+      }
+    ],
+    "behavior": [
+      {
+        "identity": "developer01",
+        "cloud_provider": "AWS",
+        "login_hour": 22,
+        "api_call_count": 9881,
+        "failed_login_count": 15
+      },
+      {
+        "identity": "admin01",
+        "cloud_provider": "AWS",
+        "login_hour": 15,
+        "api_call_count": 357,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "auditor01",
+        "cloud_provider": "Azure",
+        "login_hour": 7,
+        "api_call_count": 796,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "dataanalyst01",
+        "cloud_provider": "GCP",
+        "login_hour": 8,
+        "api_call_count": 798,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "devops01",
+        "cloud_provider": "AWS",
+        "login_hour": 19,
+        "api_call_count": 373,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "guest01",
+        "cloud_provider": "Azure",
+        "login_hour": 12,
+        "api_call_count": 214,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "testuser01",
+        "cloud_provider": "GCP",
+        "login_hour": 13,
+        "api_call_count": 261,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "serviceaccount01",
+        "cloud_provider": "AWS",
+        "login_hour": 0,
+        "api_call_count": 7157,
+        "failed_login_count": 16
+      },
+      {
+        "identity": "monitor01",
+        "cloud_provider": "Azure",
+        "login_hour": 19,
+        "api_call_count": 282,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "securityadmin01",
+        "cloud_provider": "GCP",
+        "login_hour": 8,
+        "api_call_count": 991,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "userA",
+        "cloud_provider": "AWS",
+        "login_hour": 11,
+        "api_call_count": 961,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "userB",
+        "cloud_provider": "Azure",
+        "login_hour": 15,
+        "api_call_count": 723,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userC",
+        "cloud_provider": "GCP",
+        "login_hour": 9,
+        "api_call_count": 482,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userD",
+        "cloud_provider": "AWS",
+        "login_hour": 15,
+        "api_call_count": 897,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "userE",
+        "cloud_provider": "Azure",
+        "login_hour": 7,
+        "api_call_count": 713,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "userF",
+        "cloud_provider": "GCP",
+        "login_hour": 14,
+        "api_call_count": 119,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userG",
+        "cloud_provider": "AWS",
+        "login_hour": 12,
+        "api_call_count": 999,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "userH",
+        "cloud_provider": "Azure",
+        "login_hour": 10,
+        "api_call_count": 159,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userI",
+        "cloud_provider": "GCP",
+        "login_hour": 16,
+        "api_call_count": 180,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userJ",
+        "cloud_provider": "AWS",
+        "login_hour": 18,
+        "api_call_count": 597,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userK",
+        "cloud_provider": "Azure",
+        "login_hour": 19,
+        "api_call_count": 645,
+        "failed_login_count": 0
+      },
+      {
+        "identity": "userL",
+        "cloud_provider": "GCP",
+        "login_hour": 9,
+        "api_call_count": 775,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "userM",
+        "cloud_provider": "AWS",
+        "login_hour": 15,
+        "api_call_count": 269,
+        "failed_login_count": 1
+      },
+      {
+        "identity": "userN",
+        "cloud_provider": "Azure",
+        "login_hour": 15,
+        "api_call_count": 993,
+        "failed_login_count": 2
+      },
+      {
+        "identity": "userO",
+        "cloud_provider": "GCP",
+        "login_hour": 13,
+        "api_call_count": 316,
+        "failed_login_count": 2
+      }
+    ]
+  },
+  "policies": [
+    {
+      "identity": "developer01",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::developer01-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::developer01"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:*",
+              "iam:PassRole"
+            ],
+            "Resource": "*",
+            "Principal": {
+              "AWS": "arn:aws:iam::developer01"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identity": "admin01",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::admin01-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::admin01"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "sts:AssumeRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::project-documents/*"
+          }
+        ]
+      }
+    },
+    {
+      "identity": "auditor01",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "auditor01",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+          "Microsoft.Authorization/roleAssignments/write"
+        ]
+      }
+    },
+    {
+      "identity": "dataanalyst01",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:dataanalyst01@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get",
+            "resourcemanager.projects.setIamPolicy"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "devops01",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::devops01-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::devops01"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/application-*",
+            "Condition": {
+              "StringEquals": {
+                "iam:PassedToService": "lambda.amazonaws.com"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identity": "guest01",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "guest01",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "testuser01",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:testuser01@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "serviceaccount01",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::serviceaccount01-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::serviceaccount01"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identity": "monitor01",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "monitor01",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "securityadmin01",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:securityadmin01@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "userA",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::userA-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::userA"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:*"
+            ],
+            "Resource": "arn:aws:s3:::project-storage/*"
+          }
+        ]
+      }
+    },
+    {
+      "identity": "userB",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "userB",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "userC",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:userC@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "userD",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::userD-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::userD"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "sts:AssumeRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::project-documents/*"
+          }
+        ]
+      }
+    },
+    {
+      "identity": "userE",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "userE",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "userF",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:userF@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "userG",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::userG-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::userG"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:*"
+            ],
+            "Resource": "arn:aws:s3:::project-storage/*"
+          }
+        ]
+      }
+    },
+    {
+      "identity": "userH",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "userH",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "userI",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:userI@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "userJ",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::userJ-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::userJ"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/application-*",
+            "Condition": {
+              "StringEquals": {
+                "iam:PassedToService": "lambda.amazonaws.com"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identity": "userK",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "userK",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "userL",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:userL@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    },
+    {
+      "identity": "userM",
+      "csp": "AWS",
+      "raw_policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::userM-bucket/*",
+            "Principal": {
+              "AWS": "arn:aws:iam::userM"
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "sts:AssumeRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+          }
+        ]
+      }
+    },
+    {
+      "identity": "userN",
+      "csp": "Azure",
+      "raw_policy_document": {
+        "principal": "userN",
+        "role": "Reader",
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ]
+      }
+    },
+    {
+      "identity": "userO",
+      "csp": "GCP",
+      "raw_policy_document": {
+        "binding": {
+          "members": [
+            "user:userO@example.com"
+          ],
+          "role": "roles/viewer",
+          "permissions": [
+            "storage.objects.get"
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": [
+    {
+      "identity": "developer01",
+      "cloud_provider": "AWS",
+      "role": "Developer",
+      "is_admin": true,
+      "mfa_enabled": false,
+      "has_api_key": true,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": true,
+      "risk_scenario": "wildcard_and_passrole"
+    },
+    {
+      "identity": "admin01",
+      "cloud_provider": "AWS",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "auditor01",
+      "cloud_provider": "Azure",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": true,
+      "risk_scenario": "role_assignment_write"
+    },
+    {
+      "identity": "dataanalyst01",
+      "cloud_provider": "GCP",
+      "role": "DataAnalyst",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": true,
+      "risk_scenario": "set_iam_policy"
+    },
+    {
+      "identity": "devops01",
+      "cloud_provider": "AWS",
+      "role": "Operator",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "guest01",
+      "cloud_provider": "Azure",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "testuser01",
+      "cloud_provider": "GCP",
+      "role": "Operator",
+      "is_admin": false,
+      "mfa_enabled": false,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "serviceaccount01",
+      "cloud_provider": "AWS",
+      "role": "Operator",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": true,
+      "risk_scenario": "behavior_only"
+    },
+    {
+      "identity": "monitor01",
+      "cloud_provider": "Azure",
+      "role": "Developer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": true,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "securityadmin01",
+      "cloud_provider": "GCP",
+      "role": "Viewer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userA",
+      "cloud_provider": "AWS",
+      "role": "Developer",
+      "is_admin": true,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userB",
+      "cloud_provider": "Azure",
+      "role": "Viewer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": true,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userC",
+      "cloud_provider": "GCP",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userD",
+      "cloud_provider": "AWS",
+      "role": "Viewer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userE",
+      "cloud_provider": "Azure",
+      "role": "Operator",
+      "is_admin": false,
+      "mfa_enabled": false,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userF",
+      "cloud_provider": "GCP",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userG",
+      "cloud_provider": "AWS",
+      "role": "Auditor",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userH",
+      "cloud_provider": "Azure",
+      "role": "Developer",
+      "is_admin": true,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userI",
+      "cloud_provider": "GCP",
+      "role": "Developer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userJ",
+      "cloud_provider": "AWS",
+      "role": "Developer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Low",
+      "privilege_level_numeric": 1,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userK",
+      "cloud_provider": "Azure",
+      "role": "Auditor",
+      "is_admin": true,
+      "mfa_enabled": false,
+      "has_api_key": true,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userL",
+      "cloud_provider": "GCP",
+      "role": "Developer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userM",
+      "cloud_provider": "AWS",
+      "role": "Auditor",
+      "is_admin": true,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userN",
+      "cloud_provider": "Azure",
+      "role": "Viewer",
+      "is_admin": true,
+      "mfa_enabled": true,
+      "has_api_key": false,
+      "privilege_level": "High",
+      "privilege_level_numeric": 3,
+      "is_true_risk": false,
+      "risk_scenario": null
+    },
+    {
+      "identity": "userO",
+      "cloud_provider": "GCP",
+      "role": "Viewer",
+      "is_admin": false,
+      "mfa_enabled": true,
+      "has_api_key": true,
+      "privilege_level": "Medium",
+      "privilege_level_numeric": 2,
+      "is_true_risk": false,
+      "risk_scenario": null
+    }
+  ],
+  "behavior": [
+    {
+      "identity": "developer01",
+      "cloud_provider": "AWS",
+      "login_hour": 22,
+      "api_call_count": 9881,
+      "failed_login_count": 15
+    },
+    {
+      "identity": "admin01",
+      "cloud_provider": "AWS",
+      "login_hour": 15,
+      "api_call_count": 357,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "auditor01",
+      "cloud_provider": "Azure",
+      "login_hour": 7,
+      "api_call_count": 796,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "dataanalyst01",
+      "cloud_provider": "GCP",
+      "login_hour": 8,
+      "api_call_count": 798,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "devops01",
+      "cloud_provider": "AWS",
+      "login_hour": 19,
+      "api_call_count": 373,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "guest01",
+      "cloud_provider": "Azure",
+      "login_hour": 12,
+      "api_call_count": 214,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "testuser01",
+      "cloud_provider": "GCP",
+      "login_hour": 13,
+      "api_call_count": 261,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "serviceaccount01",
+      "cloud_provider": "AWS",
+      "login_hour": 0,
+      "api_call_count": 7157,
+      "failed_login_count": 16
+    },
+    {
+      "identity": "monitor01",
+      "cloud_provider": "Azure",
+      "login_hour": 19,
+      "api_call_count": 282,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "securityadmin01",
+      "cloud_provider": "GCP",
+      "login_hour": 8,
+      "api_call_count": 991,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "userA",
+      "cloud_provider": "AWS",
+      "login_hour": 11,
+      "api_call_count": 961,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "userB",
+      "cloud_provider": "Azure",
+      "login_hour": 15,
+      "api_call_count": 723,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userC",
+      "cloud_provider": "GCP",
+      "login_hour": 9,
+      "api_call_count": 482,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userD",
+      "cloud_provider": "AWS",
+      "login_hour": 15,
+      "api_call_count": 897,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "userE",
+      "cloud_provider": "Azure",
+      "login_hour": 7,
+      "api_call_count": 713,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "userF",
+      "cloud_provider": "GCP",
+      "login_hour": 14,
+      "api_call_count": 119,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userG",
+      "cloud_provider": "AWS",
+      "login_hour": 12,
+      "api_call_count": 999,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "userH",
+      "cloud_provider": "Azure",
+      "login_hour": 10,
+      "api_call_count": 159,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userI",
+      "cloud_provider": "GCP",
+      "login_hour": 16,
+      "api_call_count": 180,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userJ",
+      "cloud_provider": "AWS",
+      "login_hour": 18,
+      "api_call_count": 597,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userK",
+      "cloud_provider": "Azure",
+      "login_hour": 19,
+      "api_call_count": 645,
+      "failed_login_count": 0
+    },
+    {
+      "identity": "userL",
+      "cloud_provider": "GCP",
+      "login_hour": 9,
+      "api_call_count": 775,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "userM",
+      "cloud_provider": "AWS",
+      "login_hour": 15,
+      "api_call_count": 269,
+      "failed_login_count": 1
+    },
+    {
+      "identity": "userN",
+      "cloud_provider": "Azure",
+      "login_hour": 15,
+      "api_call_count": 993,
+      "failed_login_count": 2
+    },
+    {
+      "identity": "userO",
+      "cloud_provider": "GCP",
+      "login_hour": 13,
+      "api_call_count": 316,
+      "failed_login_count": 2
+    }
+  ],
+  "aws_snapshot": {
+    "source": "existing_mock25_extended",
+    "users": [
+      {
+        "UserName": "developer01",
+        "Arn": "arn:aws:iam::111122223333:user/developer01",
+        "GroupList": [],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::developer01-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::developer01"
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:*",
+                    "iam:PassRole"
+                  ],
+                  "Resource": "*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::developer01"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "admin01",
+        "Arn": "arn:aws:iam::111122223333:user/admin01",
+        "GroupList": [
+          "ProjectReaders"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::admin01-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::admin01"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "AssumeReadOnlyRole",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sts:AssumeRole"
+                  ],
+                  "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "devops01",
+        "Arn": "arn:aws:iam::111122223333:user/devops01",
+        "GroupList": [
+          "AutomationOperators"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::devops01-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::devops01"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "serviceaccount01",
+        "Arn": "arn:aws:iam::111122223333:user/serviceaccount01",
+        "GroupList": [],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::serviceaccount01-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::serviceaccount01"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "userA",
+        "Arn": "arn:aws:iam::111122223333:user/userA",
+        "GroupList": [
+          "StorageOperators"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::userA-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::userA"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "userD",
+        "Arn": "arn:aws:iam::111122223333:user/userD",
+        "GroupList": [
+          "ProjectReaders"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::userD-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::userD"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "AssumeDeploymentRole",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sts:AssumeRole"
+                  ],
+                  "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "userG",
+        "Arn": "arn:aws:iam::111122223333:user/userG",
+        "GroupList": [
+          "StorageOperators"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::userG-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::userG"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "userJ",
+        "Arn": "arn:aws:iam::111122223333:user/userJ",
+        "GroupList": [
+          "AutomationOperators"
+        ],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::userJ-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::userJ"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "UserName": "userM",
+        "Arn": "arn:aws:iam::111122223333:user/userM",
+        "GroupList": [],
+        "UserPolicyList": [
+          {
+            "PolicyName": "OriginalDirectPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": "arn:aws:s3:::userM-bucket/*",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::userM"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "AssumeStorageMaintenanceRole",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sts:AssumeRole"
+                  ],
+                  "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "GroupName": "ProjectReaders",
+        "Arn": "arn:aws:iam::111122223333:group/ProjectReaders",
+        "GroupPolicyList": [
+          {
+            "PolicyName": "ProjectReadersPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Resource": "arn:aws:s3:::project-documents/*"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "GroupName": "StorageOperators",
+        "Arn": "arn:aws:iam::111122223333:group/StorageOperators",
+        "GroupPolicyList": [
+          {
+            "PolicyName": "StorageOperatorsPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:*"
+                  ],
+                  "Resource": "arn:aws:s3:::project-storage/*"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "GroupName": "AutomationOperators",
+        "Arn": "arn:aws:iam::111122223333:group/AutomationOperators",
+        "GroupPolicyList": [
+          {
+            "PolicyName": "AutomationOperatorsPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "iam:PassRole"
+                  ],
+                  "Resource": "arn:aws:iam::111122223333:role/application-*",
+                  "Condition": {
+                    "StringEquals": {
+                      "iam:PassedToService": "lambda.amazonaws.com"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "RoleName": "ReadOnlyRole",
+        "Arn": "arn:aws:iam::111122223333:role/ReadOnlyRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": [
+                  "arn:aws:iam::111122223333:user/admin01"
+                ]
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "RolePolicyList": [
+          {
+            "PolicyName": "ReadOnlyRolePolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Resource": "arn:aws:s3:::project-documents/*"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "RoleName": "StorageMaintenanceRole",
+        "Arn": "arn:aws:iam::111122223333:role/StorageMaintenanceRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": [
+                  "arn:aws:iam::111122223333:user/userM"
+                ]
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "RolePolicyList": [
+          {
+            "PolicyName": "StorageMaintenanceRolePolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:*"
+                  ],
+                  "Resource": "arn:aws:s3:::project-storage/*"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "RoleName": "DeploymentRole",
+        "Arn": "arn:aws:iam::111122223333:role/DeploymentRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": [
+                  "arn:aws:iam::111122223333:user/userD"
+                ]
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "RolePolicyList": [
+          {
+            "PolicyName": "DeploymentRolePolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "iam:PassRole"
+                  ],
+                  "Resource": "arn:aws:iam::111122223333:role/application-*",
+                  "Condition": {
+                    "StringEquals": {
+                      "iam:PassedToService": "lambda.amazonaws.com"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "managed_policies": []
+  },
+  "role_assignments": [
+    {
+      "user": "admin01",
+      "role": "ReadOnlyRole",
+      "user_arn": "arn:aws:iam::111122223333:user/admin01",
+      "role_arn": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+    },
+    {
+      "user": "userM",
+      "role": "StorageMaintenanceRole",
+      "user_arn": "arn:aws:iam::111122223333:user/userM",
+      "role_arn": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+    },
+    {
+      "user": "userD",
+      "role": "DeploymentRole",
+      "user_arn": "arn:aws:iam::111122223333:user/userD",
+      "role_arn": "arn:aws:iam::111122223333:role/DeploymentRole"
+    }
+  ],
+  "changes": [
+    {
+      "group": "ProjectReaders",
+      "members": [
+        "admin01",
+        "userD"
+      ],
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::project-documents/*"
+          }
+        ]
+      }
+    },
+    {
+      "group": "StorageOperators",
+      "members": [
+        "userA",
+        "userG"
+      ],
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:*"
+            ],
+            "Resource": "arn:aws:s3:::project-storage/*"
+          }
+        ]
+      }
+    },
+    {
+      "group": "AutomationOperators",
+      "members": [
+        "devops01",
+        "userJ"
+      ],
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::111122223333:role/application-*",
+            "Condition": {
+              "StringEquals": {
+                "iam:PassedToService": "lambda.amazonaws.com"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "notes": [
+    "기존 25개 Mock에 추가한 로컬 설정이며 논문 원래 실험이나 실제 AWS 수집 결과가 아닙니다.",
+    "사용자 점수는 직접·그룹 정책을 합쳐 계산합니다. 역할 정책은 별도 대상으로 검사하며 사용자 점수에 자동 합산하지 않습니다.",
+    "역할 전환 연결은 사용자 AssumeRole 허용과 역할 신뢰 정책에 설정했습니다. 전체 STS·SCP·권한 경계 평가는 수행하지 않습니다.",
+    "조치 후 비교는 사용자에게 전달된 정책 묶음에 대한 시뮬레이션입니다. 공유 그룹·역할 원본 수정 및 전체 사용자 전파 시뮬레이션은 아닙니다."
+  ]
+}

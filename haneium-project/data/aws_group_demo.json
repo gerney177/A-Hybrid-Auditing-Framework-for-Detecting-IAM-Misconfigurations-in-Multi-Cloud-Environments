@@ -1,0 +1,123 @@
+{
+  "source": "synthetic_group_validation",
+  "collected_at": "2026-10-26T00:00:00+00:00",
+  "users": [
+    {
+      "UserName": "demo-alice",
+      "Arn": "arn:aws:iam::000000000000:user/demo-alice",
+      "AttachedManagedPolicies": [
+        {
+          "PolicyArn": "arn:aws:iam::000000000000:policy/ReadSafe",
+          "PolicyName": "ReadSafe"
+        }
+      ],
+      "GroupList": [
+        "Readers",
+        "Operators"
+      ]
+    },
+    {
+      "UserName": "demo-bob",
+      "Arn": "arn:aws:iam::000000000000:user/demo-bob",
+      "GroupList": [
+        "Readers"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "GroupName": "Readers",
+      "Arn": "arn:aws:iam::000000000000:group/team/Readers",
+      "AttachedManagedPolicies": [
+        {
+          "PolicyArn": "arn:aws:iam::000000000000:policy/ReadSafe",
+          "PolicyName": "ReadSafe"
+        }
+      ]
+    },
+    {
+      "GroupName": "Operators",
+      "Arn": "arn:aws:iam::000000000000:group/Operators",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "RestrictedPassRole",
+          "PolicyDocument": {
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "iam:PassRole",
+                "Resource": "arn:aws:iam::000000000000:role/ApprovedRole",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                  }
+                }
+              },
+              {
+                "Effect": "Deny",
+                "Action": "iam:*",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "UnusedGroup",
+      "Arn": "arn:aws:iam::000000000000:group/UnusedGroup",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "UnassignedWildcard",
+          "PolicyDocument": {
+            "Statement": {
+              "Effect": "Allow",
+              "Action": "*",
+              "Resource": "*"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "managed_policies": [
+    {
+      "Arn": "arn:aws:iam::000000000000:policy/ReadSafe",
+      "PolicyVersionList": [
+        {
+          "IsDefaultVersion": false,
+          "VersionId": "v1",
+          "Document": {
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "*",
+                "Resource": "*"
+              }
+            ]
+          }
+        },
+        {
+          "IsDefaultVersion": true,
+          "VersionId": "v2",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::demo-data/*",
+                "Condition": {
+                  "Bool": {
+                    "aws:SecureTransport": "true"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "roles": []
+}

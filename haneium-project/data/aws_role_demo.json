@@ -1,0 +1,116 @@
+{
+  "source": "synthetic_role_validation",
+  "collected_at": "2026-10-26T00:00:00+00:00",
+  "users": [
+    {
+      "UserName": "demo-reader",
+      "Arn": "arn:aws:iam::000000000000:user/demo-reader",
+      "AttachedManagedPolicies": [
+        {
+          "PolicyArn": "arn:aws:iam::000000000000:policy/ReadSafe",
+          "PolicyName": "ReadSafe"
+        }
+      ]
+    }
+  ],
+  "groups": [],
+  "managed_policies": [
+    {
+      "Arn": "arn:aws:iam::000000000000:policy/ReadSafe",
+      "PolicyVersionList": [
+        {
+          "IsDefaultVersion": false,
+          "VersionId": "v1",
+          "Document": {
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "*",
+                "Resource": "*"
+              }
+            ]
+          }
+        },
+        {
+          "IsDefaultVersion": true,
+          "VersionId": "v2",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::demo-data/*",
+                "Condition": {
+                  "Bool": {
+                    "aws:SecureTransport": "true"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "RoleName": "NormalRole",
+      "Arn": "arn:aws:iam::000000000000:role/team/NormalRole",
+      "AttachedManagedPolicies": [
+        {
+          "PolicyArn": "arn:aws:iam::000000000000:policy/ReadSafe",
+          "PolicyName": "ReadSafe"
+        }
+      ],
+      "AssumeRolePolicyDocument": {
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "*",
+            "Principal": "*"
+          }
+        ]
+      }
+    },
+    {
+      "RoleName": "WildcardRole",
+      "Arn": "arn:aws:iam::000000000000:role/WildcardRole",
+      "RolePolicyList": [
+        {
+          "PolicyName": "WildcardInline",
+          "PolicyDocument": {
+            "Statement": {
+              "Effect": "Allow",
+              "Action": "s3:*",
+              "Resource": "*"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "PassRoleRole",
+      "Arn": "arn:aws:iam::000000000000:role/PassRoleRole",
+      "RolePolicyList": [
+        {
+          "PolicyName": "PassRoleInline",
+          "PolicyDocument": {
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "iam:PassRole",
+                "Resource": "arn:aws:iam::000000000000:role/ApprovedRole"
+              },
+              {
+                "Effect": "Deny",
+                "Action": "iam:PassRole",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

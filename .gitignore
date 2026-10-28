@@ -1,0 +1,21 @@
+# ── Python ──
+.venv/
+__pycache__/
+*.pyc
+
+# ── Node ──
+node_modules/
+dist/
+
+# ── 실행하면 생기는 파일 (저장소에는 올리지 않음) ──
+haneium-project/data/iam.db
+haneium-project/validation/reports/*
+!haneium-project/validation/reports/.gitkeep
+
+# ── 실제 AWS 계정에서 수집한 원본: 계정 ID 등이 들어 있으므로 절대 커밋하지 않는다 ──
+haneium-project/data/aws_iam_snapshot.json
+
+# ── 기타 ──
+*.log
+.env
+.DS_Store

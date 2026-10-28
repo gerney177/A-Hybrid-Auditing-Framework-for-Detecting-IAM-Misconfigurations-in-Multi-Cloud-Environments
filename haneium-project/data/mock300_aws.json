@@ -1,0 +1,4538 @@
+{
+  "source": "mock300",
+  "users": [
+    {
+      "UserName": "developer01",
+      "Arn": "arn:aws:iam::111122223333:user/developer01",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::developer01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::developer01"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::developer01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "admin01",
+      "Arn": "arn:aws:iam::111122223333:user/admin01",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::admin01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::admin01"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "devops01",
+      "Arn": "arn:aws:iam::111122223333:user/devops01",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::devops01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::devops01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "serviceaccount01",
+      "Arn": "arn:aws:iam::111122223333:user/serviceaccount01",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::serviceaccount01-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::serviceaccount01"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userA",
+      "Arn": "arn:aws:iam::111122223333:user/userA",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userA-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userA"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userD",
+      "Arn": "arn:aws:iam::111122223333:user/userD",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userD-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userD"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userG",
+      "Arn": "arn:aws:iam::111122223333:user/userG",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userG-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userG"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userJ",
+      "Arn": "arn:aws:iam::111122223333:user/userJ",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userJ-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userJ"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "userM",
+      "Arn": "arn:aws:iam::111122223333:user/userM",
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::userM-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::userM"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_001",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_001",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_001-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_001"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_002",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_002",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_002-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_002"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_003",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_003",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_003-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_003"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_004",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_004",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_004-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_004"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_005",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_005",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_005-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_005"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_006",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_006",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_006-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_006"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_007",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_007",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_007-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_007"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_008",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_008",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_008-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_008"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_009",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_009",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_009-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_009"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_010",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_010",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_010-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_010"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_011",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_011",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_011-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_011"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_012",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_012",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_012-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_012"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_013",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_013",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_013-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_013"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_014",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_014",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_014-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_014"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_015",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_015",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_015-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_015"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_016",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_016",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_016-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_016"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_017",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_017",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_017-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_017"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_018",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_018",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_018-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_018"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_019",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_019",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_019-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_019"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_020",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_020",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_020-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_020"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_020"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_021",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_021",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_021-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_021"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_022",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_022",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_022-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_022"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_023",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_023",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_023-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_023"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_024",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_024",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_024-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_024"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_025",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_025",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_025-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_025"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_026",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_026",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_026-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_026"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_027",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_027",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_027-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_027"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_028",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_028",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_028-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_028"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_029",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_029",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_029-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_029"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_030",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_030",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_030-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_030"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_031",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_031",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_031-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_031"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_032",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_032",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_032-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_032"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_033",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_033",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_033-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_033"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_034",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_034",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_034-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_034"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_035",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_035",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_035-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_035"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_036",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_036",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_036-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_036"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_037",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_037",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_037-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_037"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_038",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_038",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_038-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_038"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_039",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_039",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_039-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_039"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_040",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_040",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_040-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_040"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_040"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_041",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_041",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_041-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_041"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_042",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_042",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_042-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_042"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_043",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_043",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_043-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_043"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_044",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_044",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_044-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_044"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_045",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_045",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_045-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_045"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_046",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_046",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_046-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_046"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_047",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_047",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_047-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_047"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_048",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_048",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_048-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_048"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_049",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_049",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_049-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_049"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_050",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_050",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_050-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_050"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_051",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_051",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_051-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_051"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_052",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_052",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_052-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_052"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_053",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_053",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_053-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_053"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_054",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_054",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_054-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_054"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_055",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_055",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_055-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_055"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_056",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_056",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_056-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_056"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_057",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_057",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_057-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_057"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_058",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_058",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_058-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_058"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_059",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_059",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_059-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_059"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_060",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_060",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_060-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_060"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_060"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_061",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_061",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_061-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_061"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_062",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_062",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_062-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_062"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_063",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_063",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_063-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_063"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_064",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_064",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_064-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_064"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_065",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_065",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_065-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_065"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_066",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_066",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_066-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_066"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_067",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_067",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_067-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_067"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_068",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_068",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_068-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_068"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_069",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_069",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_069-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_069"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_070",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_070",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_070-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_070"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_071",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_071",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_071-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_071"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_072",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_072",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_072-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_072"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_073",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_073",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_073-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_073"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_074",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_074",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_074-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_074"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_075",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_075",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_075-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_075"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_076",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_076",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_076-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_076"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_077",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_077",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_077-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_077"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_078",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_078",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_078-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_078"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_079",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_079",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_079-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_079"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_080",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_080",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_080-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_080"
+                }
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*",
+                  "iam:PassRole"
+                ],
+                "Resource": "*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_080"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_081",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_081",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_081-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_081"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_082",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_082",
+      "GroupList": [
+        "AutomationOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_082-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_082"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_083",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_083",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_083-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_083"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_084",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_084",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_084-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_084"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_085",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_085",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_085-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_085"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_086",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_086",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_086-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_086"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_087",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_087",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_087-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_087"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_088",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_088",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_088-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_088"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_089",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_089",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_089-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_089"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeStorageMaintenanceRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/StorageMaintenanceRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_090",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_090",
+      "GroupList": [
+        "ProjectReaders"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_090-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_090"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeDeploymentRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/DeploymentRole"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "mock_aws_091",
+      "Arn": "arn:aws:iam::111122223333:user/mock_aws_091",
+      "GroupList": [
+        "StorageOperators"
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OriginalDirectPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::mock_aws_091-bucket/*",
+                "Principal": {
+                  "AWS": "arn:aws:iam::mock_aws_091"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "PolicyName": "AssumeReadOnlyRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/ReadOnlyRole"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "GroupName": "ProjectReaders",
+      "Arn": "arn:aws:iam::111122223333:group/ProjectReaders",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "ProjectReadersPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::project-documents/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "StorageOperators",
+      "Arn": "arn:aws:iam::111122223333:group/StorageOperators",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "StorageOperatorsPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": "arn:aws:s3:::project-storage/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "AutomationOperators",
+      "Arn": "arn:aws:iam::111122223333:group/AutomationOperators",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "AutomationOperatorsPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/application-*",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "RoleName": "ReadOnlyRole",
+      "Arn": "arn:aws:iam::111122223333:role/ReadOnlyRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/admin01",
+                "arn:aws:iam::111122223333:user/mock_aws_001",
+                "arn:aws:iam::111122223333:user/mock_aws_004",
+                "arn:aws:iam::111122223333:user/mock_aws_007",
+                "arn:aws:iam::111122223333:user/mock_aws_010",
+                "arn:aws:iam::111122223333:user/mock_aws_013",
+                "arn:aws:iam::111122223333:user/mock_aws_016",
+                "arn:aws:iam::111122223333:user/mock_aws_019",
+                "arn:aws:iam::111122223333:user/mock_aws_022",
+                "arn:aws:iam::111122223333:user/mock_aws_025",
+                "arn:aws:iam::111122223333:user/mock_aws_028",
+                "arn:aws:iam::111122223333:user/mock_aws_031",
+                "arn:aws:iam::111122223333:user/mock_aws_034",
+                "arn:aws:iam::111122223333:user/mock_aws_037",
+                "arn:aws:iam::111122223333:user/mock_aws_040",
+                "arn:aws:iam::111122223333:user/mock_aws_043",
+                "arn:aws:iam::111122223333:user/mock_aws_046",
+                "arn:aws:iam::111122223333:user/mock_aws_049",
+                "arn:aws:iam::111122223333:user/mock_aws_052",
+                "arn:aws:iam::111122223333:user/mock_aws_055",
+                "arn:aws:iam::111122223333:user/mock_aws_058",
+                "arn:aws:iam::111122223333:user/mock_aws_061",
+                "arn:aws:iam::111122223333:user/mock_aws_064",
+                "arn:aws:iam::111122223333:user/mock_aws_067",
+                "arn:aws:iam::111122223333:user/mock_aws_070",
+                "arn:aws:iam::111122223333:user/mock_aws_073",
+                "arn:aws:iam::111122223333:user/mock_aws_076",
+                "arn:aws:iam::111122223333:user/mock_aws_079",
+                "arn:aws:iam::111122223333:user/mock_aws_082",
+                "arn:aws:iam::111122223333:user/mock_aws_085",
+                "arn:aws:iam::111122223333:user/mock_aws_088",
+                "arn:aws:iam::111122223333:user/mock_aws_091"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "ReadOnlyRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::project-documents/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "StorageMaintenanceRole",
+      "Arn": "arn:aws:iam::111122223333:role/StorageMaintenanceRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/userM",
+                "arn:aws:iam::111122223333:user/mock_aws_002",
+                "arn:aws:iam::111122223333:user/mock_aws_005",
+                "arn:aws:iam::111122223333:user/mock_aws_008",
+                "arn:aws:iam::111122223333:user/mock_aws_011",
+                "arn:aws:iam::111122223333:user/mock_aws_014",
+                "arn:aws:iam::111122223333:user/mock_aws_017",
+                "arn:aws:iam::111122223333:user/mock_aws_020",
+                "arn:aws:iam::111122223333:user/mock_aws_023",
+                "arn:aws:iam::111122223333:user/mock_aws_026",
+                "arn:aws:iam::111122223333:user/mock_aws_029",
+                "arn:aws:iam::111122223333:user/mock_aws_032",
+                "arn:aws:iam::111122223333:user/mock_aws_035",
+                "arn:aws:iam::111122223333:user/mock_aws_038",
+                "arn:aws:iam::111122223333:user/mock_aws_041",
+                "arn:aws:iam::111122223333:user/mock_aws_044",
+                "arn:aws:iam::111122223333:user/mock_aws_047",
+                "arn:aws:iam::111122223333:user/mock_aws_050",
+                "arn:aws:iam::111122223333:user/mock_aws_053",
+                "arn:aws:iam::111122223333:user/mock_aws_056",
+                "arn:aws:iam::111122223333:user/mock_aws_059",
+                "arn:aws:iam::111122223333:user/mock_aws_062",
+                "arn:aws:iam::111122223333:user/mock_aws_065",
+                "arn:aws:iam::111122223333:user/mock_aws_068",
+                "arn:aws:iam::111122223333:user/mock_aws_071",
+                "arn:aws:iam::111122223333:user/mock_aws_074",
+                "arn:aws:iam::111122223333:user/mock_aws_077",
+                "arn:aws:iam::111122223333:user/mock_aws_080",
+                "arn:aws:iam::111122223333:user/mock_aws_083",
+                "arn:aws:iam::111122223333:user/mock_aws_086",
+                "arn:aws:iam::111122223333:user/mock_aws_089"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "StorageMaintenanceRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": "arn:aws:s3:::project-storage/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "DeploymentRole",
+      "Arn": "arn:aws:iam::111122223333:role/DeploymentRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:user/userD",
+                "arn:aws:iam::111122223333:user/mock_aws_003",
+                "arn:aws:iam::111122223333:user/mock_aws_006",
+                "arn:aws:iam::111122223333:user/mock_aws_009",
+                "arn:aws:iam::111122223333:user/mock_aws_012",
+                "arn:aws:iam::111122223333:user/mock_aws_015",
+                "arn:aws:iam::111122223333:user/mock_aws_018",
+                "arn:aws:iam::111122223333:user/mock_aws_021",
+                "arn:aws:iam::111122223333:user/mock_aws_024",
+                "arn:aws:iam::111122223333:user/mock_aws_027",
+                "arn:aws:iam::111122223333:user/mock_aws_030",
+                "arn:aws:iam::111122223333:user/mock_aws_033",
+                "arn:aws:iam::111122223333:user/mock_aws_036",
+                "arn:aws:iam::111122223333:user/mock_aws_039",
+                "arn:aws:iam::111122223333:user/mock_aws_042",
+                "arn:aws:iam::111122223333:user/mock_aws_045",
+                "arn:aws:iam::111122223333:user/mock_aws_048",
+                "arn:aws:iam::111122223333:user/mock_aws_051",
+                "arn:aws:iam::111122223333:user/mock_aws_054",
+                "arn:aws:iam::111122223333:user/mock_aws_057",
+                "arn:aws:iam::111122223333:user/mock_aws_060",
+                "arn:aws:iam::111122223333:user/mock_aws_063",
+                "arn:aws:iam::111122223333:user/mock_aws_066",
+                "arn:aws:iam::111122223333:user/mock_aws_069",
+                "arn:aws:iam::111122223333:user/mock_aws_072",
+                "arn:aws:iam::111122223333:user/mock_aws_075",
+                "arn:aws:iam::111122223333:user/mock_aws_078",
+                "arn:aws:iam::111122223333:user/mock_aws_081",
+                "arn:aws:iam::111122223333:user/mock_aws_084",
+                "arn:aws:iam::111122223333:user/mock_aws_087",
+                "arn:aws:iam::111122223333:user/mock_aws_090"
+              ]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [
+        {
+          "PolicyName": "DeploymentRolePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::111122223333:role/application-*",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "managed_policies": []
+}
